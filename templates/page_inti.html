@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block judul %} Index {% endblock judul %}
+
+
+{% block konten %}
+<div style="margin-left:120px">
+
+	<h1>Selamat Datang di {{ negara.nama_negara }}</h1>
+
+	<h3><i>Info yang boleh diakses: </i></h3>
+	<table style="text-align: left;">
+		<tr>
+			<th>Negara</th>
+			<td>: {{ data_json.country_name }}</td>
+		</tr>
+		<tr>
+			<th>Kode Negara</th>
+			<td>: {{ data_json.country_code }}</td>
+		</tr>
+		<tr>
+			<th>Kota Router</th>
+			<td>: {{ data_json.city }}</td>
+		</tr>
+		<tr>
+			<th>Provinsi</th>
+			<td>: {{ data_json.state }}</td>
+		</tr>
+		<tr>
+			<th>Latitude</th>
+			<td>: {{ data_json.latitude }}</td>
+		</tr>
+		<tr>
+			<th>Longitude</th>
+			<td>: {{ data_json.longitude }}</td>
+		</tr>
+	</table>
+	<a href="{% url 'MajuJayaApp:index' %}">Kembali</a>
+	
+
+
+</div>
+{% endblock konten %}

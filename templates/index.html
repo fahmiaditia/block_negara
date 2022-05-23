@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block judul %} Index {% endblock judul %}
+
+
+{% block konten %}
+<div style="margin-left:120px">
+
+	<h1>Tabel Negara</h1>
+	<table style="text-align: left;">
+		<tr>
+			<th>Negara saat ini</th>
+			<td>: <a href="#{{ negara_ip }}">{{ negara_ip }}</a></td>
+		</tr>
+		<tr>
+			<th>IP Negara</th>
+			<td>: {{ ip }}</td>
+		</tr>
+	</table>
+
+	<div style="height: 340px; overflow-y: auto; border: 3px solid purple; width: 600px;">
+		<table style="border: 1px solid blue;">
+			<tr>
+				<th style="border: 1px solid blue;">Negara</th>
+				<th style="border: 1px solid blue;">Akses</th>
+				<th style="border: 1px solid blue;">Aksi</th>
+			</tr>
+			{% for data in negara %}
+			<tr>
+				{% if data.nama_negara == negara_ip %}
+					<td style="border: 1px solid blue; background-color: green; color: white;" id="{{ data.nama_negara }}">{{ data.nama_negara }}</td>
+					<td style="border: 1px solid blue; background-color: green; color: white;">Diizinkan</td>
+					<td style="border: 1px solid blue; background-color: green; color: white;">Direct ke page <a href="{% url 'MajuJayaApp:page_inti' data.uuid_negara %}" style="color: white; font-style: bold;">{{ data.nama_negara }}</a></td>
+				{% else %}
+					<td style="border: 1px solid blue;" id="{{ data.nama_negara }}">{{ data.nama_negara }}</td>
+					<td style="border: 1px solid blue; background-color: red; color: white;">Tidak diizinkan</td>
+					<td style="border: 1px solid blue;">Tidak dapat direct ke page</td>
+				{% endif %}
+
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock konten %}
